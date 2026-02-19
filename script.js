@@ -1,19 +1,56 @@
-// ===== STATE =====
-let todos = [];
+/************************************************
+ * STATE
+ ************************************************/
 
-// ===== DOM ELEMENTS =====
+let todos = [];
+let currentFilter = "all";
+
+/************************************************
+ * DOM ELEMENTS
+ ************************************************/
+
 const todoTitle = document.querySelector("#titleInput");
 const todoDescript = document.querySelector("#descInput");
 const todoDate = document.querySelector("#dateInput");
 const addButton = document.querySelector("#addBtn");
 const todoListContainer = document.querySelector("#todoList");
+const filterSelect = document.querySelector("#filterSelect");
+const themeToggle = document.querySelector("#themeToggle");
 
-// ===== ID GENERATOR =====
+/************************************************
+ * STORAGE (localStorage)
+ ************************************************/
+
+function loadTodos() {
+  const storedTodos = localStorage.getItem("todos");
+
+  if (storedTodos) {
+    todos = JSON.parse(storedTodos);
+  }
+}
+
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+/************************************************
+ * HELPERS
+ ************************************************/
+
+function updateUI() {
+  saveTodos();
+  renderTodos();
+}
+
 function generateId() {
   return "todo_" + Math.random().toString(36).slice(2, 9);
 }
 
-// ===== ADD TODO =====
+/************************************************
+ * CORE LOGIC
+ ************************************************/
+
+// ADD TODO
 function addTodo() {
   const title = todoTitle.value.trim();
   const description = todoDescript.value.trim();
@@ -34,18 +71,29 @@ function addTodo() {
 
   todos.push(newTodo);
 
+  // clear inputs
   todoTitle.value = "";
   todoDescript.value = "";
   todoDate.value = "";
 
-  renderTodos();
+  updateUI();
 }
 
-// ===== RENDER TODOS =====
+// RENDER TODOS
 function renderTodos() {
   todoListContainer.innerHTML = "";
 
-  todos.forEach((todo) => {
+  let filteredTodos = todos;
+
+  if (currentFilter === "completed") {
+    filteredTodos = todos.filter((todo) => todo.completed);
+  }
+
+  if (currentFilter === "pending") {
+    filteredTodos = todos.filter((todo) => !todo.completed);
+  }
+
+  filteredTodos.forEach((todo) => {
     const li = document.createElement("li");
     li.className = "todo-item";
 
@@ -76,13 +124,25 @@ function renderTodos() {
   });
 }
 
-// ===== EVENT DELEGATION =====
+/************************************************
+ * EVENT LISTENERS
+ ************************************************/
+
+// Filter dropdown
+filterSelect.addEventListener("change", (e) => {
+  currentFilter = e.target.value;
+  renderTodos();
+});
+
+// Event delegation (delete + toggle)
 todoListContainer.addEventListener("click", (e) => {
-  // DELETE TODO
+  // DELETE
   if (e.target.classList.contains("delete-btn")) {
     const id = e.target.dataset.id;
+
     todos = todos.filter((todo) => todo.id !== id);
-    renderTodos();
+
+    updateUI();
   }
 
   // TOGGLE COMPLETE
@@ -93,9 +153,39 @@ todoListContainer.addEventListener("click", (e) => {
       todo.id === id ? { ...todo, completed: !todo.completed } : todo,
     );
 
-    renderTodos();
+    updateUI();
   }
 });
 
-// ===== BUTTON LISTENER =====
+// Add button
 addButton.addEventListener("click", addTodo);
+
+/************************************************
+ * THEME TOGGLE
+ ************************************************/
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeToggle.textContent = "☀️ Light Mode";
+  }
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+
+  themeToggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+});
+
+/************************************************
+ * APP INITIALIZATION
+ ************************************************/
+loadTodos();
+loadTheme();
+renderTodos();

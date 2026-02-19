@@ -10,6 +10,9 @@
 <body>
 
   <div class="app">
+
+    <button id="themeToggle">🌙 Dark Mode</button>
+
     <h1>Todo App</h1>
 
     <div class="todo-form">
@@ -22,6 +25,12 @@
 
       <button id="addBtn">Add Todo</button>
     </div>
+
+    <select id="filterSelect">
+      <option value="all">All</option>
+      <option value="completed">Completed</option>
+      <option value="pending">Pending</option>
+    </select>
 
     <ul id="todoList"></ul>
   </div>

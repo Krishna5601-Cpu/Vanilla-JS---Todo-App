@@ -1,71 +1,122 @@
+/* =========================
+   THEME VARIABLES
+========================= */
+
+:root {
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --text: #222;
+  --border: #e5e7eb;
+  --accent: #4f46e5;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --border: #334155;
+  --accent: #818cf8;
+}
+
+/* =========================
+   BASE
+========================= */
+
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, sans-serif;
 }
 
 body {
-  background: #f4f6f8;
+  background: var(--bg);
+  color: var(--text);
   padding: 40px;
+  transition: 0.3s ease;
 }
+
+/* =========================
+   APP CONTAINER
+========================= */
 
 .app {
-  max-width: 500px;
+  max-width: 520px;
   margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
-h1 {
-  text-align: center;
-}
+/* =========================
+   FORM
+========================= */
 
 .todo-form input,
 .todo-form textarea,
-.todo-form button {
+.todo-form button,
+#filterSelect {
   width: 100%;
   margin-bottom: 10px;
-  padding: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
 }
 
 .todo-form button {
-  background: #007bff;
+  background: var(--accent);
   color: white;
   border: none;
   cursor: pointer;
 }
 
-.todo-form button:hover {
-  background: #0056b3;
-}
+/* =========================
+   TODOS
+========================= */
 
 #todoList {
   list-style: none;
   padding: 0;
 }
 
-.todo-item {
-  margin-bottom: 10px;
-}
-
 .todo-card {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
 }
 
 .todo-card h3 {
-  flex-grow: 1;
+  flex: 1;
   margin: 0;
 }
 
 .delete-btn {
-  background: red;
-  color: white;
+  background: #ef4444;
   border: none;
-  padding: 5px 8px;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+#themeToggle {
+  float: right;
+  margin-bottom: 10px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
   cursor: pointer;
 }
