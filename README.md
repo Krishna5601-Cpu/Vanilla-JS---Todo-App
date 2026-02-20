@@ -1,21 +1,39 @@
-# Vanilla JavaScript Todo App
+# ✅ Vanilla JS Todo App
 
-A clean and simple Todo application built using plain JavaScript (Vanilla JS).
+A modern Todo application built using **Vanilla JavaScript**, featuring a clean minimal UI with Dark/Light theme support.
 
-## Features
-- Add todos
-- Delete todos
-- Mark todos as complete/incomplete
-- Clean UI
-- No frameworks used
+## ✨ Features
 
-## Tech Stack
+- Add, edit, delete todos
+- Mark tasks complete/incomplete
+- Filter (All / Completed / Pending)
+- Persistent storage using localStorage
+- Dark / Light theme toggle
+- Responsive minimal UI
+
+## 🧠 Concepts Practiced
+
+- DOM Manipulation
+- Event Delegation
+- State Management
+- localStorage Persistence
+- ES6+ JavaScript
+- UI Theming with CSS Variables
+
+## 🛠 Tech Stack
+
 - HTML
-- CSS
+- CSS (Custom Properties)
 - JavaScript (Vanilla)
 
-## Learning Goals
-- DOM manipulation
-- Event delegation
-- State management
-- Clean rendering logic
+## 🚀 Live Learning Goals
+
+This project is part of my journey to master:
+
+- Frontend fundamentals
+- Clean JavaScript architecture
+- Real-world project building
+
+---
+
+Made with ❤️ while learning JavaScript.
