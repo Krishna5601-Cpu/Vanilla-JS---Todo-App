@@ -1,46 +1,45 @@
 # Vanilla JS Todo App
 
-This is a Todo application I built while learning JavaScript fundamentals.  
-The main goal of this project was to understand how real applications work using **plain JavaScript without any frameworks**.
+This project is a Todo application I built while learning JavaScript by actually building something instead of only watching tutorials.
 
-Instead of following a single tutorial, I tried to build features step by step and improve the project gradually — starting from basic DOM manipulation and ending with a polished UI and better user experience.
+The main goal was to understand how a real application works using **plain JavaScript**, without frameworks or libraries. I started with basic DOM manipulation and gradually improved the project by adding features, refactoring code, and polishing the user experience step by step.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
 - Add, edit and delete todos
 - Mark tasks as completed / pending
-- Filter todos (All / Completed / Pending)
-- Data persistence using localStorage
+- Filter tasks (All / Completed / Pending)
+- Data saved using localStorage (persists after refresh)
 - Dark / Light theme toggle
-- Keyboard support (Enter key to add tasks)
-- Smooth animations and interactions
-- Clean minimal interface
+- Keyboard support (press Enter to add task)
+- Smooth animations and UI interactions
+- Minimal clean interface
 
 ---
 
-## 🧠 What I Learned
+## 🧠 What I Practiced
 
-This project helped me understand:
+While building this project I focused on understanding:
 
 - DOM manipulation
 - Event delegation
 - Managing application state
-- Working with arrays (`map`, `filter`, `reduce`)
+- Array methods (`map`, `filter`)
+- Code structuring and refactoring
 - localStorage persistence
-- Structuring JavaScript code properly
-- Improving UX step by step instead of writing everything at once
+- Improving UX through small iterations
 
-Most importantly, I learned how small improvements and refactoring make a big difference in real projects.
+This project helped me understand how small features combine to form a complete application.
 
 ---
 
-## 🎨 About Design & CSS
+## 🎨 About Styling
 
-The **JavaScript logic, structure, and functionality** of this project are written and organized by me as part of my learning process.
+The **JavaScript logic, structure, and functionality** of this project were designed and implemented by me as part of my learning process.
 
-The **CSS styling and visual design were created with the help of AI guidance**, while I integrated and adjusted them into the project myself.
+The **CSS styling and visual design were created with AI guidance**, and then integrated and adjusted by me inside the project.
 
 ---
 
@@ -50,22 +49,42 @@ The **CSS styling and visual design were created with the help of AI guidance**,
 - CSS
 - Vanilla JavaScript (ES6+)
 
-No frameworks or libraries were used.
+No frameworks or external libraries were used.
 
 ---
 
-## 📌 Project Purpose
+## 📁 Project Structure
 
-This project is part of my journey to become better at JavaScript and frontend development by building real projects instead of only studying theory.
+index.html → structure
+style.css → styling & themes
+script.js → application logic
 
 ---
 
-## 🔮 Future Improvements (maybe)
+## 🚀 How to Run
+
+1. Clone the repository
+
+git clone https://github.com/Krishna5601-Cpu/Vanilla-JS---Todo-App.git
+
+2. Open `index.html` in your browser.
+
+That's it.
+
+---
+
+## 📌 Purpose of This Project
+
+This is part of my journey to become better at JavaScript and frontend development by building real projects and improving them incrementally.
+
+---
+
+## 🔮 Possible Future Improvements
 
 - Better mobile responsiveness
 - Backend integration
-- User accounts
-- More advanced task management features
+- User authentication
+- Advanced task organization
 
 ---
 
