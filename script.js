@@ -61,11 +61,6 @@ function addTodo() {
     return;
   }
 
-  if (!dueDate) {
-    alert("Please select a due date");
-    return;
-  }
-
   const newTodo = {
     id: generateId(),
     title,
@@ -76,12 +71,25 @@ function addTodo() {
 
   todos.push(newTodo);
 
-  // clear inputs
   todoTitle.value = "";
   todoDescript.value = "";
   todoDate.value = "";
 
   updateUI();
+
+  
+  setTimeout(() => {
+    const lastTodo = todoListContainer.lastElementChild;
+
+    if (lastTodo) {
+      lastTodo.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, 50);
+
+  // focus back to input
   todoTitle.focus();
 }
 
@@ -97,6 +105,11 @@ function renderTodos() {
 
   if (currentFilter === "pending") {
     filteredTodos = todos.filter((todo) => !todo.completed);
+  }
+
+  if (filteredTodos.length === 0) {
+    todoListContainer.innerHTML = `<p class="empty-state">📝 No tasks yet — add your first todo!</p>`;
+    return;
   }
 
   filteredTodos.forEach((todo) => {
@@ -116,7 +129,7 @@ function renderTodos() {
     title.textContent = todo.title;
 
     if (todo.completed) {
-      title.style.textDecoration = "line-through";
+      card.classList.add("completed");
     }
 
     const delBtn = document.createElement("button");
@@ -187,6 +200,13 @@ themeToggle.addEventListener("click", () => {
   localStorage.setItem("theme", isDark ? "dark" : "light");
 
   themeToggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+});
+
+todoTitle.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addTodo();
+  }
 });
 
 /************************************************

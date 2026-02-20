@@ -1,122 +1,254 @@
-/* =========================
-   THEME VARIABLES
-========================= */
+/* =====================================
+   DESIGN SYSTEM (LIGHT + DARK)
+===================================== */
 
 :root {
-  --bg: #f5f7fb;
+  --bg: #f6f8fb;
   --card-bg: #ffffff;
-  --text: #222;
-  --border: #e5e7eb;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+
   --accent: #4f46e5;
+  --accent-glow: rgba(79, 70, 229, 0.25);
+
+  --danger: #ef4444;
 }
 
 body.dark {
-  --bg: #0f172a;
-  --card-bg: #1e293b;
-  --text: #e2e8f0;
-  --border: #334155;
+  --bg: #0b1220;
+  --card-bg: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #1f2937;
+
   --accent: #818cf8;
+  --accent-glow: rgba(129, 140, 248, 0.35);
 }
 
-/* =========================
+/* =====================================
    BASE
-========================= */
+===================================== */
 
 * {
   box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 body {
+  margin: 0;
+  padding: 40px;
   background: var(--bg);
   color: var(--text);
-  padding: 40px;
   transition: 0.3s ease;
 }
 
-/* =========================
+/* =====================================
    APP CONTAINER
-========================= */
+===================================== */
 
 .app {
-  max-width: 520px;
+  max-width: 560px;
   margin: auto;
+  padding: 28px;
   background: var(--card-bg);
-  padding: 25px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--border);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.4s ease;
 }
 
-/* =========================
+h1 {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+/* =====================================
+   THEME BUTTON
+===================================== */
+
+#themeToggle {
+  float: right;
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#themeToggle:hover {
+  transform: translateY(-1px);
+}
+
+/* =====================================
    FORM
-========================= */
+===================================== */
 
 .todo-form input,
 .todo-form textarea,
 .todo-form button,
 #filterSelect {
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 11px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--card-bg);
   color: var(--text);
+  transition: 0.2s ease;
+  outline: none;
 }
+
+.todo-form textarea {
+  resize: vertical;
+}
+
+/* Focus Glow */
+
+.todo-form input:focus,
+.todo-form textarea:focus,
+#filterSelect:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Button */
 
 .todo-form button {
   background: var(--accent);
   color: white;
   border: none;
+  font-weight: 500;
   cursor: pointer;
 }
 
-/* =========================
-   TODOS
-========================= */
+.todo-form button:hover {
+  transform: translateY(-1px);
+}
+
+/* =====================================
+   TODO LIST
+===================================== */
 
 #todoList {
   list-style: none;
   padding: 0;
+  margin-top: 10px;
 }
+
+/* Card */
 
 .todo-card {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
+  gap: 12px;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--card-bg);
+  transition: all 0.25s ease;
+}
+
+.todo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 .todo-card h3 {
   flex: 1;
   margin: 0;
+  font-weight: 500;
 }
+
+/* =====================================
+   CHECKBOX
+===================================== */
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.15s ease;
+}
+
+input[type="checkbox"]:active {
+  transform: scale(0.9);
+}
+
+/* =====================================
+   COMPLETED STYLE
+===================================== */
+
+.todo-card.completed {
+  opacity: 0.55;
+  transform: scale(0.98);
+}
+
+.todo-card.completed h3 {
+  text-decoration: line-through;
+}
+
+/* =====================================
+   DELETE BUTTON
+===================================== */
 
 .delete-btn {
-  background: #ef4444;
+  background: var(--danger);
   border: none;
   color: white;
   padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 7px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
-/* =========================
-   THEME BUTTON
-========================= */
+.delete-btn:hover {
+  transform: scale(1.05);
+}
 
-#themeToggle {
-  float: right;
-  margin-bottom: 10px;
-  border: none;
-  background: var(--accent);
-  color: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* =====================================
+   ANIMATIONS
+===================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-item {
+  animation: todoAppear 0.35s ease;
+}
+
+@keyframes todoAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
