@@ -57,7 +57,12 @@ function addTodo() {
   const dueDate = todoDate.value;
 
   if (!title) {
-    alert("Todo title is required");
+    alert("Title is required");
+    return;
+  }
+
+  if (!dueDate) {
+    alert("Please select a due date");
     return;
   }
 
@@ -77,6 +82,7 @@ function addTodo() {
   todoDate.value = "";
 
   updateUI();
+  todoTitle.focus();
 }
 
 // RENDER TODOS

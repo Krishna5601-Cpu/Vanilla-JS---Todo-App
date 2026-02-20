@@ -29,11 +29,9 @@ A modern Todo application built using **Vanilla JavaScript**, featuring a clean 
 ## 🚀 Live Learning Goals
 
 This project is part of my journey to master:
-
 - Frontend fundamentals
 - Clean JavaScript architecture
 - Real-world project building
 
 ---
 
-Made with ❤️ while learning JavaScript.
