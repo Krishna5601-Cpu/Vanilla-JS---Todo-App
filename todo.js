@@ -1,4 +1,3 @@
-// Simple "namespace" to avoid global mess
 (function () {
   const STORAGE_KEY = "todo-fire-list-v1";
 
@@ -7,7 +6,7 @@
   let currentFilter = "all"; // 'all' | 'active' | 'completed'
   let currentSort = "created_desc";
 
-  // DOM refs
+  // DOM Selectors
   const form = document.getElementById("todo-form");
   const inputText = document.getElementById("todo-text");
   const inputDate = document.getElementById("todo-date");
@@ -16,7 +15,7 @@
   const filterButtons = document.querySelectorAll(".chip[data-filter]");
   const sortSelect = document.getElementById("sort-select");
 
-  // ---------- Local Storage ----------
+  // Storing in Local Storage
 
   function loadTodos() {
     try {
@@ -45,7 +44,7 @@
     }
   }
 
-  // ---------- Helpers ----------
+  // Helper Functions
 
   function createId() {
     return Date.now().toString(36) + Math.random().toString(16).slice(2);
@@ -112,7 +111,7 @@
     return sorted;
   }
 
-  // ---------- Rendering ----------
+  // Rendering In DOM
 
   function renderTodos() {
     const items = getFilteredAndSortedTodos();
@@ -185,7 +184,7 @@
     updateCounter();
   }
 
-  // ---------- Event Handlers ----------
+  // Event Handlers
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -205,10 +204,7 @@
     todos.push(todo);
     saveTodos();
 
-    // Reset inputs
     inputText.value = "";
-    // keep last chosen date OR clear? Let's keep as-is, feels practical.
-    // inputDate.value = "";
 
     renderTodos();
     inputText.focus();
@@ -256,7 +252,7 @@
     renderTodos();
   }
 
-  // ---------- Init ----------
+  // Initialization Starting
 
   function init() {
     loadTodos();
